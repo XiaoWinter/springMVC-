@@ -3,9 +3,15 @@ package com.xiiaoadong.request_param.web;
 import com.xiiaoadong.request_param.pojo.Admin;
 import com.xiiaoadong.request_param.pojo.FromAdminList;
 import com.xiiaoadong.request_param.pojo.User;
+import com.xiiaoadong.request_param.util.DateUtil;
+import org.apache.commons.lang3.time.DateUtils;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -209,4 +215,33 @@ public class ParamController {
         System.out.println(user);
         return user;
     }
+
+    /**
+     *date:2018-05-24
+     * @param date
+     */
+    @PostMapping("date")
+    public void dateType(Date date){
+        System.out.println(date);
+    }
+    /**
+     *date2:2018-05-24
+     * @param date2
+     *
+     */
+    @PostMapping("date2")
+    public void dateType2(Date date2){
+        System.out.println(date2);
+    }
+
+//    /**
+//     * InitBinder注解的value为指定requestParam的name
+//     * 此注解的作用范围在自身所在controller内
+//     * @param binder
+//     */
+//    @InitBinder({"date"})
+//    public void initDate(WebDataBinder binder){
+//        //指定处理类型，自定义数据处理器，处理器允许requestParam值为空
+//        binder.registerCustomEditor(Date.class,new CustomDateEditor(DateUtil.S_DAY_DATEFORMAT,true));
+//    }
 }
